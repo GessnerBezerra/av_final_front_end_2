@@ -1,0 +1,40 @@
+AULA 11.05.22 - typescript
+
+1. inicializar a pasta do projeto no vscode;
+
+2. clicar com o direito no campo vazio > abri no terminal integrado;
+
+3. inicializar o projeto no node: npm init -y;
+
+4. instalar as dependências do typescript: npm install typescript@latest;
+
+* typescript -> tipagem -> comunicação entre front end e back end;
+* trabalhar no arquivo .ts;
+
+5. criar na raiz do projeto a pasta "scr" (pasta de scripts) e a pasta "dist" (pasta qua irá armazenar o .js);
+
+6. criar um arquivo de configuração (tsconfig.json) para o typescript: npx tsc --init;
+
+7. dentro do arquivo tsconfig.json, descomentar e completar:
+
+	a. "rootDir":"./src", - diretório que irá encontrar os arquivos compilados
+	b. "outDir":"./dist", - onde ele vai cria e salva o .js
+
+8. cria o arquivo index.ts na pasta src;
+
+9.executa o typescript no terminal node: npm install ts-node-dev;
+
+10. configurar comandos no package.json - depurar - "scripts":
+	a. "dev": "ts-node-dev --ignore-watch node_modules src/ex01.ts",
+	b. "build": "npx tsc",
+	c. "start": "node ./dist/ex01.js"
+* dev: testa no terminal do desenvolvedor (node); npm run dev
+* build: faz a traspilação/compilação .ts -> .js; npm run build
+* start: valida o .js e coloca no ambiente de produção (navegador); npn run start
+  
+---> quando tiver mais de um exercício, lembrar de trocar no package.json o dev e o start ANTES do build <---
+
+11. criar na raiz do projeto a pasta "public" que irá receber o html e o css;
+
+* Crtl + L = limpa o terminal;
+* Ctrl + C = Para o terminal;
