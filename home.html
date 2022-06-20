@@ -4,13 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./public/css/style_home.css" />
     <title>Document</title>
   </head>
@@ -60,30 +56,17 @@
             </table>
           </section>
           
-          <!-- Button trigger modal -->
-          <!-- <button type="button" class="btn btn-primary">
-            Launch demo modal
-          </button> -->
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          
+      <!-- Modal Apagar -->
+      <div class="toast text-bg-primary" role="alert" aria-live="assertive" aria-atomic="true" id="toastApagarRecado" data-bs-autohide="false">
+        <div class="toast-body">
+            Quer apagar o recado?
+            <div class="mt-2 pt-2 border-top">
+                <button type="button" class="btn btn-sm bg-warning" data-bs-dismiss="toast" id="toastApagarRecadoSim">Sim</button>
+                <button type="button" class="btn btn-sm bg-info" data-bs-dismiss="toast">Não</button>
             </div>
-            <div class="modal-body">
-              <p>Tem certeza que deseja remover o recado de registro ID ${registroID + 1}?
-              ;</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick=`apagando(${registroID + 1})` id="inf_botao_editar">Sim</button>
-              <button type="button" class="btn btn-primary">Cancelar</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
     </div>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
@@ -95,6 +78,7 @@
       integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
       crossorigin="anonymous"
     ></script>
+    <script src="https://kit.fontawesome.com/b6008d9d9d.js" crossorigin="anonymous"></script>
     <script src="./dist/home.js"></script>
   </body>
 </html>

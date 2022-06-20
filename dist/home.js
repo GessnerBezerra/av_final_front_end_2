@@ -21,12 +21,14 @@ let botaoAtualizar = document.querySelector("#botao_atualizar");
 let botaoCancelar = document.querySelector("#botao_cancelar");
 let botaoSair = document.querySelector("#botaoSair");
 let tabelaDados = document.querySelector("#tabela-registros");
+let ModApagar = document.querySelector("#toastApagarRecado");
+let ModalApagar = new bootstrap.Toast(ModApagar);
 /////////////////////*************EVENTOS****************///////////////////////////
 formulario.addEventListener("submit", (e) => {
     e.preventDefault();
     adicionarNovoRegistro();
 });
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
     if (!login) {
         alert("Você precisa estar logado para acessar essa página!");
         window.location.href = "../index.html";
@@ -34,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     salvarNaTabela(listaRecados);
 });
-// document.addEventListener('DOMContentLoaded', salvarNaTabela(listaRecados));
 botaoSair.addEventListener("click", logOut);
 //////////////////////*******FUNÇÕES**********////////////////////////////////////////////////
 function adicionarNovoRegistro() {
@@ -99,39 +100,14 @@ function pegarDadosStorage() {
     }
     return;
 }
-function apagarRegistro(registroID) {
-    // let modal: HTMLElement = document.createElement("div");
-    // modal.innerHTML = `
-    // <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    //       <div class="modal-dialog">
-    //         <div class="modal-content">
-    //           <div class="modal-header">
-    //             <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-    //             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    //           </div>
-    //           <div class="modal-body">
-    //             <p>Tem certeza que deseja remover o recado de registro ID ${registroID + 1}?
-    //             ;</p>
-    //           </div>
-    //           <div class="modal-footer">
-    //             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="apagando(${registroID + 1})" id="inf_botao_editar">Sim</button>
-    //             <button type="button" class="btn btn-primary">Cancelar</button>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   `;
-    let confirma = window.confirm(`Tem certeza que deseja remover o recado de registro ID ${registroID + 1}?`);
-    // myModal.hide();
-}
-;
 function apagando(indice) {
-    let confirma = window.confirm(`Tem certeza que deseja remover o recado de registro ID ${indice}?`);
-    if (confirma) {
+    ModalApagar.show();
+    let ApagarRecadoSim = document.querySelector("#toastApagarRecadoSim");
+    ApagarRecadoSim.addEventListener("click", () => {
         listaRecados.splice(indice, 1);
         salvarNoStorage(listaUsuarios);
         window.location.reload();
-    }
+    });
 }
 function cancelarEdicao() {
     botaoCancelar.setAttribute("onclick", `limparCampos()`);

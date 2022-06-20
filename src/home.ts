@@ -5,7 +5,9 @@ if (!login) {
   window.location.href = "../index.html";
 }
 let usuario = window.sessionStorage.getItem("usuarioLogado");
-let listaUsuarios = JSON.parse(window.localStorage.getItem("dados-usuario") || "[]");
+let listaUsuarios = JSON.parse(
+  window.localStorage.getItem("dados-usuario") || "[]"
+);
 let indiceUsuario: string = "";
 
 for (const indice in listaUsuarios) {
@@ -15,14 +17,11 @@ for (const indice in listaUsuarios) {
 }
 
 let listaRecados = listaUsuarios[indiceUsuario].recados;
-
 let formulario = document.querySelector("#recados") as HTMLFormElement;
-
 let inputTitulo = document.querySelector("#descricao") as HTMLInputElement;
 let inputDescricao = document.querySelector(
   "#detalhamento"
 ) as HTMLInputElement;
-
 let botaoSalvar = document.querySelector("#enviar_info") as HTMLButtonElement;
 let botaoAtualizar = document.querySelector(
   "#botao_atualizar"
@@ -30,12 +29,12 @@ let botaoAtualizar = document.querySelector(
 let botaoCancelar = document.querySelector(
   "#botao_cancelar"
 ) as HTMLButtonElement;
-
-
-
 let botaoSair = document.querySelector("#botaoSair") as HTMLButtonElement;
-
 let tabelaDados = document.querySelector("#tabela-registros") as HTMLDivElement;
+
+let ModApagar = document.querySelector("#toastApagarRecado") as HTMLDivElement;
+
+let ModalApagar = new bootstrap.Toast(ModApagar);
 
 interface Recados {
   indice: string;
@@ -43,10 +42,10 @@ interface Recados {
   detalhamento: string;
 }
 interface Usuario {
-  nome: string,
-    login: string,
-    senha: string,
-    recados: Recados[]
+  nome: string;
+  login: string;
+  senha: string;
+  recados: Recados[];
 }
 /////////////////////*************EVENTOS****************///////////////////////////
 
@@ -56,17 +55,15 @@ formulario.addEventListener("submit", (e) => {
   adicionarNovoRegistro();
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   if (!login) {
-      alert("Você precisa estar logado para acessar essa página!");
-      window.location.href = "../index.html";
-      return
+    alert("Você precisa estar logado para acessar essa página!");
+    window.location.href = "../index.html";
+    return;
   }
 
   salvarNaTabela(listaRecados);
 });
-
-// document.addEventListener('DOMContentLoaded', salvarNaTabela(listaRecados));
 
 botaoSair.addEventListener("click", logOut);
 
@@ -127,7 +124,7 @@ function salvarNaTabela(dadosrecados: Recados[]) {
   }
 }
 
-function limparCampos():void {
+function limparCampos(): void {
   inputTitulo.value = "";
   inputDescricao.value = "";
 }
@@ -154,54 +151,19 @@ function pegarDadosStorage() {
   return;
 }
 
-function apagarRegistro(registroID: string): void {
-  // let modal: HTMLElement = document.createElement("div");
+function apagando(indice: Recados[]): void {
+  ModalApagar.show();
 
-  // modal.innerHTML = `
+  let ApagarRecadoSim = document.querySelector(
+    "#toastApagarRecadoSim"
+  ) as HTMLButtonElement;
 
-  // <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  //       <div class="modal-dialog">
-  //         <div class="modal-content">
-  //           <div class="modal-header">
-  //             <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-  //             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-  //           </div>
-  //           <div class="modal-body">
-  //             <p>Tem certeza que deseja remover o recado de registro ID ${registroID + 1}?
-  //             ;</p>
-  //           </div>
-  //           <div class="modal-footer">
-  //             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="apagando(${registroID + 1})" id="inf_botao_editar">Sim</button>
-  //             <button type="button" class="btn btn-primary">Cancelar</button>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-
-  //   `;
-
-  let confirma = window.confirm(
-    `Tem certeza que deseja remover o recado de registro ID ${registroID + 1}?`
-  );
-
-    // myModal.hide();
-};
-
-
-
-    function apagando (indice:Recados[]) : void{
-
-        let confirma = window.confirm(
-            `Tem certeza que deseja remover o recado de registro ID ${indice}?`
-          );
-          if (confirma){
-            listaRecados.splice(indice, 1);
-        
-            salvarNoStorage(listaUsuarios);
-            window.location.reload();
-          }        
-    }
-  
+  ApagarRecadoSim.addEventListener("click", () => {
+    listaRecados.splice(indice, 1);
+    salvarNoStorage(listaUsuarios);
+    window.location.reload();
+  });
+}
 
 function cancelarEdicao() {
   botaoCancelar.setAttribute("onclick", `limparCampos()`);
@@ -220,7 +182,7 @@ function prepararEdicao(registroID: string) {
   inputDescricao.value = listaRecados[registroID].detalhamento;
 }
 
-function atualizarRegistro(registroID : string) {
+function atualizarRegistro(registroID: string) {
   let novoTitulo = inputTitulo.value;
   let novaDescricao = inputDescricao.value;
 

@@ -162,12 +162,6 @@ function logarNoSistema(usuarioLogando: any) {
         return
     }
 
-    // if (!existe) {
-    //     alert("E-mail ou senha não existe, deseja criar conta?!");
-    //     window.location.href = 'public/home.html';
-    //     return
-    // }
-
     sessionStorage.setItem('usuarioLogado', inputLoginEmail.value);
     window.location.href = '../home.html';
 }
