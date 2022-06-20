@@ -102,8 +102,8 @@ function pegarDadosStorage() {
 }
 function apagando(indice) {
     ModalApagar.show();
-    let ApagarRecadoSim = document.querySelector("#toastApagarRecadoSim");
-    ApagarRecadoSim.addEventListener("click", () => {
+    let ApagarRecado = document.querySelector("#ApagarRecado");
+    ApagarRecado.addEventListener("click", () => {
         listaRecados.splice(indice, 1);
         salvarNoStorage(listaUsuarios);
         window.location.reload();
