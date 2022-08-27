@@ -83,7 +83,7 @@ function adicionarNovoRegistro(): void {
 
   window.location.reload();
 
-  // salvarNaTabela(listaRecados);
+
   limparCampos();
 
   window.localStorage.setItem("dados-usuario", JSON.stringify(listaUsuarios));
@@ -91,11 +91,15 @@ function adicionarNovoRegistro(): void {
 
 function salvarNaTabela(dadosrecados: Recados[]) {
   if (dadosrecados.length > 0) {
+
     for (const indice in dadosrecados) {
+
       dadosrecados[indice].indice = indice;
+      
       window.localStorage.setItem(
         "dados-usuario",
         JSON.stringify(listaUsuarios)
+
       );
 
       let novaLinha = document.createElement("tr");

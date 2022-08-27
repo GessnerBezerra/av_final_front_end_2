@@ -48,7 +48,6 @@ function adicionarNovoRegistro() {
     };
     listaRecados.push(recados);
     window.location.reload();
-    // salvarNaTabela(listaRecados);
     limparCampos();
     window.localStorage.setItem("dados-usuario", JSON.stringify(listaUsuarios));
 }
