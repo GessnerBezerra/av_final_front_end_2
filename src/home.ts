@@ -83,7 +83,7 @@ function adicionarNovoRegistro(): void {
 
   window.location.reload();
 
-  salvarNaTabela(listaRecados);
+  // salvarNaTabela(listaRecados);
   limparCampos();
 
   window.localStorage.setItem("dados-usuario", JSON.stringify(listaUsuarios));
