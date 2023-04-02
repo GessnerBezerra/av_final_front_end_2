@@ -11,7 +11,7 @@ AULA 11.05.22 - typescript
 * typescript -> tipagem -> comunicação entre front end e back end;
 * trabalhar no arquivo .ts;
 
-5. criar na raiz do projeto a pasta "scr" (pasta de scripts) e a pasta "dist" (pasta qua irá armazenar o .js);
+5. criar na raiz do projeto a pasta "src" (pasta de scripts) e a pasta "dist" (pasta qua irá armazenar o .js);
 
 6. criar um arquivo de configuração (tsconfig.json) para o typescript: npx tsc --init;
 
