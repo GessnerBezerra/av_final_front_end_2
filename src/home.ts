@@ -19,6 +19,7 @@ for (const indice in listaUsuarios) {
   }
 }
 
+
 let listaRecados = listaUsuarios[indiceUsuario].recados;
 let formulario = document.querySelector("#recados") as HTMLFormElement;
 let inputTitulo = document.querySelector("#descricao") as HTMLInputElement;
